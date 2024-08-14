@@ -6,9 +6,12 @@ from langchain.schema import SystemMessage
 from langchain.chains import LLMChain
 from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
+from langchain_community.chat_message_histories import FileChatMessageHistory
 
+history = FileChatMessageHistory('chat_history.json')
 memory = ConversationBufferMemory(
     memory_key='chat_history',
+    chat_memory=history,
     return_messages=True
 )
 
